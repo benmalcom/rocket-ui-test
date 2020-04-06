@@ -6,8 +6,8 @@ import './Launches.sass';
 
 
 const LaunchesView = (props) => {
-    const {launchCollection, dispatch} = props;
-    const { launches, fetching } = launchCollection;
+    const {launchCollection, dispatch } = props;
+    const { launches, fetching, hasMore } = launchCollection;
     const fetchLaunches = () => fetchLaunchesIfNeeded({dispatch, launchCollection});
     useEffect(() => {
         fetchLaunches();
@@ -28,6 +28,9 @@ const LaunchesView = (props) => {
             <h2> SpaceX launches</h2>
             {getContent()}
             {fetching && <div className="loading"> Loading... </div>}
+            {hasMore && !fetching && <div className="load-more">
+                <button type="button" onClick={fetchLaunches}>Load More</button>
+            </div>}
         </div>
     );
 };
