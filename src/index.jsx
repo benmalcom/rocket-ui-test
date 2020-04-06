@@ -1,31 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {AppContainer} from 'react-hot-loader'
-import Routes from './routes'
+import {BrowserRouter as Router} from 'react-router-dom'
+import {Provider} from "react-redux"
+import Layout from './views/Layout'
 
-import "styles/base/_main.sass"  // Global styles
-import "styles/base/_common.sass"  // Global styles
-import "styles/_style.sass"  // Css-module styles
+import "../styles/base/_main.sass"  // Global styles
+import "../styles/base/_common.sass"  // Global styles
+import "../styles/_style.sass"  // Css-module styles
 
-import { Provider } from "react-redux";
-import store from "./stores/Root.js";
+import store from "./stores/Root";
 
-const renderApp = (Component) => {
-  ReactDOM.render(
-    <Provider store={store}>
-      <AppContainer>
-        <Component/>
-      </AppContainer>
-    </Provider>,
+const App = () => <Provider store={store}>
+    <Router>
+        <Layout/>
+    </Router>
+</Provider>;
+
+ReactDOM.render(<App/>,
     document.getElementById('app')
-  );
-};
-
-renderApp(Routes);
-
-// Webpack Hot Module Replacement API
-if (module.hot) {
-  module.hot.accept('./routes', () => {
-    renderApp(require('./routes').default);
-  })
-}
+);
