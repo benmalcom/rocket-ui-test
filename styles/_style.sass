@@ -1,4 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto')
+@mixin mobileBreakpointSettings()
+  #app
+    > div
+      main
+        flex-direction: column
+        max-width: 100%
+        padding: 0
+        overflow-x: hidden
+        > nav
+          width: 100%
+          ul
+            li
+              display: inline
+              float: left
+              > a
+                width: auto
 
 body
   margin: 0
@@ -17,7 +33,6 @@ body
     width: 100%
 
     main
-
       display: flex
       flex: 1
       flex-direction: row
@@ -34,10 +49,11 @@ body
           margin: 0
 
           > li
-            margin: 4px;
+            margin: 4px
             padding: 4px
             background: #ccc
             border-bottom: 2px solid #ccc
+            list-style: none
 
             &:hover
               background: #ddd
@@ -61,3 +77,12 @@ body
           margin-top: 0
           border-bottom: 2px solid #999
           color: #666
+
+
+
+@media (min-width: 320px) and (max-width: 480px)
+  @include mobileBreakpointSettings
+@media (min-width: 481px) and (max-width: 767px)
+  @include mobileBreakpointSettings
+
+
