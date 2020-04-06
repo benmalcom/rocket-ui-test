@@ -19,8 +19,9 @@ const actionHandlers = {
     launches: [...state.launches, ...action.payload.launches],
     offset: state.offset + action.payload.launches.length,
     hasMore: !!action.payload.launches && action.payload.launches.length > 0
-  })
+  }),
+  [ACTIONS.RESET_LAUNCHES]: () => initialState,
 };
 
 export default (state = initialState, action) =>
-  actionHandlers[action.type] ? actionHandlers[action.type]({ state, action }) : state;
+    actionHandlers[action.type] ? actionHandlers[action.type]({ state, action }) : state;

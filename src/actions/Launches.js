@@ -2,7 +2,8 @@ import LaunchService from '../services/LaunchService';
 
 export const ACTIONS = {
   REQUEST_LAUNCHES: 'REQUEST_LAUNCHES',
-  RECEIVE_LAUNCHES: 'RECEIVE_LAUNCHES'
+  RECEIVE_LAUNCHES: 'RECEIVE_LAUNCHES',
+  RESET_LAUNCHES: 'RESET_LAUNCHES'
 };
 
 export const requestLaunches = () => ({
@@ -16,6 +17,10 @@ const receiveLaunches = response => ({
   }
 });
 
+export const resetLaunchesState = () => ({
+  type: ACTIONS.RESET_LAUNCHES
+});
+
 export const fetchLaunches = (dispatch, launchCollection) => {
   dispatch(requestLaunches());
   return LaunchService.get({ limit: launchCollection.limit }).then(response => dispatch(receiveLaunches(response)));
@@ -24,4 +29,4 @@ export const fetchLaunches = (dispatch, launchCollection) => {
 const shouldFetchLaunches = launchCollection => !launchCollection || !launchCollection.fetching;
 
 export const fetchLaunchesIfNeeded = ({ dispatch, launchCollection }) =>
-  shouldFetchLaunches(launchCollection) && fetchLaunches(dispatch, launchCollection);
+    shouldFetchLaunches(launchCollection) && fetchLaunches(dispatch, launchCollection);
