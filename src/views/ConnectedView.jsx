@@ -1,28 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from "react-redux";
+import React from 'react';
+import {connect} from "react-redux";
 
-import Layout from './Layout';
-import Navigation from '../components/Navigation';
-
-const menu = Navigation();
-
-function MasterLayoutHOC(WrappedComponent, pageName) {
-  class MasterLayoutImpl extends Component {
-    render() {
-
-      const layoutProps = {
-        menu,
-        pageName
-      };
-
-      return (
-        <Layout {...layoutProps}>
-          <WrappedComponent {...this.props} />
-        </Layout>
-      );
-    }
-  }
-
+export const withConnectedView = (WrappedComponent) => {
+  const ComponentToConnect = props => <WrappedComponent {...props} />;
   const mapStateToProps = state => state;
 
   const mapDispatchToProps = dispatch => ({
@@ -30,9 +10,10 @@ function MasterLayoutHOC(WrappedComponent, pageName) {
   });
 
   return connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(MasterLayoutImpl);
-}
+      mapStateToProps,
+      mapDispatchToProps
+  )(ComponentToConnect);
+};
 
-export default MasterLayoutHOC;
+export default withConnectedView;
+
