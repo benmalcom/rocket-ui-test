@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import Collapsible from "./Collapsible";
 
 const Launch = (props) => {
@@ -36,5 +37,18 @@ const Launch = (props) => {
         </li>
     );
 };
+
+Launch.propTypes = {
+    launch: PropTypes.shape({
+        mission_name: PropTypes.string.isRequired,
+        details: PropTypes.string.isRequired,
+        rocket: PropTypes.shape({
+            rocket_name: PropTypes.string.isRequired,
+            rocket_type: PropTypes.string.isRequired,
+            rocket_id: PropTypes.string.isRequired,
+        }).isRequired
+    }).isRequired,
+};
+
 
 export default Launch;
