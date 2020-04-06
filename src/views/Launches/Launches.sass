@@ -8,36 +8,58 @@
       margin: 0
 
 div.launches
+  div.loading
+    margin: 10px 0
+
+  div.load-more
+    margin: 15px 0
+
+    button
+      width: 100px
+      height: 35px
+      border-radius: 15px
+      border: solid 1px #eff2f6
+      background-color: #ffffff
+      outline: 0
+      font-size: 12px
+      font-weight: bold
+      color: #444
+      cursor: pointer
+      opacity: 0.8
+
+      &:hover
+        opacity: 1
+
   ul.launch-list
-    padding-left: 0
-    width: 600px
-    list-style: none
+      padding-left: 0
+      width: 600px
+      list-style: none
 
-    li.launch-item
+      li.launch-item
 
-      table.launch-info-table
-        width: 100%
-        display: table
-        border-collapse: separate
+        table.launch-info-table
+          width: 100%
+          display: table
+          border-collapse: separate
 
-        tr
-          border: 1px solid #dddddd
+          tr
+            border: 1px solid #dddddd
 
-          td, th
-            padding: 3px
-            width: calc(100% / 3)
+            td, th
+              padding: 3px
+              width: calc(100% / 3)
 
-        .col-header
-          font-weight: bold
-          font-size: 14px
-          border-bottom: 1px solid #dddddd
-          padding-bottom: 5px
-          margin-bottom: 0
+          .col-header
+            font-weight: bold
+            font-size: 14px
+            border-bottom: 1px solid #dddddd
+            padding-bottom: 5px
+            margin-bottom: 0
 
-        .col-info
-          color: #7e929b
-          font-weight: 400
-          font-size: 13px
-          margin-bottom: 0
+          .col-info
+            color: #7e929b
+            font-weight: 400
+            font-size: 13px
+            margin-bottom: 0
 
 
