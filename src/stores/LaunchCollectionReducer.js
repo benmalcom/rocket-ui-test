@@ -2,7 +2,10 @@ import { ACTIONS } from '../actions/Launches';
 
 const initialState = {
   launches: [],
-  fetching: false
+  fetching: false,
+  offset: 0,
+  limit: 20,
+  hasMore: true,
 };
 
 const actionHandlers = {
@@ -13,7 +16,9 @@ const actionHandlers = {
   [ACTIONS.RECEIVE_LAUNCHES]: ({ state, action }) => ({
     ...state,
     fetching: false,
-    launches: [...state.launches, ...action.payload.launches]
+    launches: [...state.launches, ...action.payload.launches],
+    offset: state.offset + action.payload.launches.length,
+    hasMore: !!action.payload.launches && action.payload.launches.length > 0
   })
 };
 
