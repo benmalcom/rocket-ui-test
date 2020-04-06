@@ -15,6 +15,7 @@ const PORT = process.env.PORT || "7357";
 
 
 module.exports = {
+  mode: 'development',
   entry: [
     // POLYFILL: Set up an ES6-ish environment
     // 'babel-polyfill',  // The entire babel-polyfill
@@ -91,7 +92,7 @@ module.exports = {
   devServer: {
     contentBase: "./public",
     // do not print bundle build stats
-    noInfo: true,
+    noInfo: false,
     // enable HMR
     hot: true,
     // embed the webpack-dev-server runtime into the bundle
